@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+<meta name="google-site-verification" content="f7evCc8ua1JXYgdB-5V_skBq7aMDiXCjkEg1NLdHosE" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر كايدو | KAIDO STORE - المتجر الرقمي الأول للألعاب</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cairo & Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: '#06080d',
+                        surface: '#0f1420',
+                        surfaceHover: '#151c2c',
+                        cyanNeon: '#00d2ff',
+                        royalGold: '#f5b041',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #06080d;
+            color: #f8fafc;
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(6, 8, 13, 0.85);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Premium Marketplace Cards */
+        .store-card {
+            background: #0f1420;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .store-card:hover {
+            background: #141b2b;
+            border-color: rgba(245, 176, 65, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(245, 176, 65, 0.18);
+        }
+
+        .ps-card:hover {
+            border-color: rgba(0, 210, 255, 0.55);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(0, 210, 255, 0.22);
+        }
+
+        .xbox-card:hover {
+            border-color: rgba(16, 185, 129, 0.55);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(16, 185, 129, 0.22);
+        }
+
+        /* Subtle Ambient Cyber Background */
+        .cyber-grid {
+            background-image: 
+                radial-gradient(circle at 12% 12%, rgba(0, 210, 255, 0.07) 0%, transparent 40%),
+                radial-gradient(circle at 88% 20%, rgba(245, 176, 65, 0.08) 0%, transparent 45%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 34px 34px, 34px 34px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06080d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 99px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f5b041;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="cyber-grid min-h-screen flex flex-col justify-between selection:bg-[#f5b041] selection:text-black">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 left-5 z-[80] flex flex-col gap-2.5 pointer-events-none max-w-[90vw]"></div>
+
+    <!-- STICKY GLASSMORPHISM HEADER -->
+    <header class="sticky top-0 z-40 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 gap-3">
+                
+                <!-- Custom Geometric SVG Logo (Crown + Dragon Emblem) -->
+                <a href="#" onclick="resetAllFilters(event)" class="flex items-center gap-3 group flex-shrink-0">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-[#f5b041]/35 to-[#00d2ff]/35 rounded-2xl blur-md group-hover:blur-lg transition-all"></div>
+                        <svg class="w-12 h-12 relative z-10 drop-shadow-xl" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="goldGrad" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#FFF3B0"/>
+                                    <stop offset="45%" stop-color="#F5B041"/>
+                                    <stop offset="100%" stop-color="#B45309"/>
+                                </linearGradient>
+                                <linearGradient id="cyanGrad" x1="12" y1="52" x2="52" y2="12" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#00D2FF"/>
+                                    <stop offset="100%" stop-color="#2563EB"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Royal Shield Base -->
+                            <path d="M32 3L56 14V33C56 47.5 45.6 56.8 32 61C18.4 56.8 8 47.5 8 33V14L32 3Z" fill="#0B0F19" stroke="url(#goldGrad)" stroke-width="2.5"/>
+                            <!-- Inner Geometric Dragon Wing Borders -->
+                            <path d="M13 18L22 25L15 34L24 41" stroke="url(#cyanGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M51 18L42 25L49 34L40 41" stroke="url(#cyanGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Royal Crown -->
+                            <path d="M21 21L24.5 13L32 18.5L39.5 13L43 21H21Z" fill="url(#goldGrad)"/>
+                            <!-- Stylized Dragon Emblem Core -->
+                            <path d="M32 24C26.5 24 23 27.8 23 33C23 38.5 27.5 42 32 45.5C36.5 42 41 38.5 41 33C41 27.8 37.5 24 32 24ZM32 29L35.5 33.5L32 38L28.5 33.5L32 29Z" fill="url(#goldGrad)"/>
+                            <circle cx="28.5" cy="29.5" r="1.4" fill="#00D2FF"/>
+                            <circle cx="35.5" cy="29.5" r="1.4" fill="#00D2FF"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-xl sm:text-2xl font-black tracking-tight bg-gradient-to-l from-white via-[#fde68a] to-[#f5b041] bg-clip-text text-transparent">
+                                متجر كايدو
+                            </span>
+                            <span class="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-black bg-[#00d2ff]/15 text-[#00d2ff] border border-[#00d2ff]/30">
+                                OFFICIAL
+                            </span>
+                        </div>
+                        <p class="text-[11px] font-bold tracking-widest text-slate-400 uppercase">KAIDO GAMING STORE</p>
+                    </div>
+                </a>
+
+                <!-- Live Search Bar (Desktop) -->
+                <div class="hidden lg:flex items-center flex-1 max-w-md mx-4">
+                    <div class="relative w-full">
+                        <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="text" id="global-search" oninput="handleSearch(this.value)" placeholder="ابحث عن حساب اكستريم، جواهر، بطاقة 50$..." 
+                            class="w-full bg-[#0f1420] border border-white/10 focus:border-[#00d2ff] rounded-2xl pr-11 pl-4 py-2.5 text-sm text-white placeholder-slate-500 outline-none transition-all">
+                    </div>
+                </div>
+
+                <!-- Right Header Actions -->
+                <div class="flex items-center gap-2 sm:gap-2.5">
+                    <!-- Direct TikTok Link -->
+                    <a href="https://www.tiktok.com/@z0.pt" target="_blank" class="hidden md:flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#0f1420] hover:bg-[#1a2234] border border-white/10 text-slate-200 text-xs font-bold transition-all">
+                        <i class="fa-brands fa-tiktok text-[#f5b041]"></i>
+                        <span>@z0.pt</span>
+                    </a>
+
+                    <!-- Direct WhatsApp Link -->
+                    <a id="header-wa-link" href="https://wa.me/9647XXXXXXXXX" target="_blank" class="hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-400 text-xs font-black transition-all">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span>واتساب</span>
+                    </a>
+
+                    <!-- Interactive Shopping Cart Button -->
+                    <button onclick="toggleCartDrawer()" class="relative flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-gradient-to-l from-[#f5b041] to-[#d97706] hover:brightness-110 text-slate-950 text-xs sm:text-sm font-black transition-all shadow-lg shadow-[#f5b041]/20">
+                        <i class="fa-solid fa-cart-shopping text-base"></i>
+                        <span>السلة</span>
+                        <span id="cart-badge" class="min-w-[22px] h-5 px-1.5 rounded-full bg-slate-950 text-[#f5b041] text-[11px] font-black flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Search Bar -->
+            <div class="lg:hidden pb-3">
+                <div class="relative w-full">
+                    <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                    <input type="text" id="mobile-search" oninput="handleSearch(this.value)" placeholder="ابحث عن حساب باونتي راش أو بطاقة ستور..." 
+                        class="w-full bg-[#0f1420] border border-white/10 focus:border-[#00d2ff] rounded-xl pr-9 pl-3 py-2 text-xs text-white placeholder-slate-500 outline-none">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN STOREFRONT CONTENT -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 w-full">
+
+        <!-- HERO BANNER -->
+        <section class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#101726] via-[#0b101b] to-[#06080d] border border-white/10 p-6 sm:p-10 mb-8 shadow-2xl">
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-[#f5b041]/15 rounded-full blur-[85px] pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-[#00d2ff]/15 rounded-full blur-[85px] pointer-events-none"></div>
+
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Left Copy -->
+                <div class="lg:col-span-7 text-center lg:text-right">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f5b041]/10 border border-[#f5b041]/30 text-[#f5b041] text-xs font-extrabold mb-4">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>نزل شانكس بعد التعديل بمضمون 1900 🔥 — متوفر الآن</span>
+                    </div>
+
+                    <h1 class="text-2xl sm:text-4xl lg:text-[42px] font-black text-white leading-[1.2] mb-4">
+                        متجرك الأول للألعاب والبطاقات الرقمية
+                        <span class="block mt-1 bg-gradient-to-l from-[#f5b041] via-[#fde68a] to-[#00d2ff] bg-clip-text text-transparent">
+                            حسابات باونتي راش وبطاقات الستور
+                        </span>
+                    </h1>
+
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-6">
+                        اختر باقتك وأضفها للسلة، وحدد طريقة الدفع المناسبة لك داخل العراق (<strong class="text-white">زين كاش العراق، ماستر كارد، آسيا سيل، زين العراق</strong>) وأكمل طلبك بضغطة زر عبر <strong class="text-emerald-400">واتساب</strong> أو <strong class="text-[#f5b041]">تيك توك</strong>.
+                    </p>
+
+                    <!-- Trust Badges -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto lg:mx-0">
+                        <div class="flex items-center justify-center lg:justify-start gap-2.5 bg-white/[0.03] border border-white/[0.07] px-3.5 py-2.5 rounded-2xl">
+                            <div class="w-9 h-9 rounded-xl bg-[#00d2ff]/15 text-[#00d2ff] flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs font-black text-white">تسليم سريع</div>
+                                <div class="text-[11px] text-slate-400">خلال 5 - 30 دقيقة</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-center lg:justify-start gap-2.5 bg-white/[0.03] border border-white/[0.07] px-3.5 py-2.5 rounded-2xl">
+                            <div class="w-9 h-9 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-shield-check"></i>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs font-black text-white">ضمان 100%</div>
+                                <div class="text-[11px] text-slate-400">حسابات وأكواد موثوقة</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-center lg:justify-start gap-2.5 bg-white/[0.03] border border-white/[0.07] px-3.5 py-2.5 rounded-2xl">
+                            <div class="w-9 h-9 rounded-xl bg-[#f5b041]/15 text-[#f5b041] flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs font-black text-white">طلب مباشر</div>
+                                <div class="text-[11px] text-slate-400">واتساب وتيك توك @z0.pt</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Payment & Quick Guide Box -->
+                <div class="lg:col-span-5">
+                    <div class="rounded-2xl bg-gradient-to-b from-[#161f33] to-[#0a0e17] border border-white/10 p-5 shadow-2xl">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+                            <span class="text-xs font-black text-white flex items-center gap-2">
+                                <i class="fa-solid fa-wallet text-[#f5b041]"></i>
+                                وسائل الدفع المدعومة في العراق 🇮🇶
+                            </span>
+                            <span class="text-[10px] font-black text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">متاح الآن</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2.5 mb-4">
+                            <div class="p-3 rounded-xl bg-[#06080d]/90 border border-white/5">
+                                <div class="text-xs font-black text-white">🟣 زين كاش العراق</div>
+                                <div class="text-[10px] text-emerald-400 mt-0.5">السعر الأساسي (0% عمولة)</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-[#06080d]/90 border border-white/5">
+                                <div class="text-xs font-black text-white">💳 ماستر كارد</div>
+                                <div class="text-[10px] text-emerald-400 mt-0.5">السعر الأساسي (0% عمولة)</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-[#06080d]/90 border border-white/5">
+                                <div class="text-xs font-black text-white">🔴 آسيا سيل / حوالة</div>
+                                <div class="text-[10px] text-amber-400 mt-0.5">+20% فرق تصريف الرصيد</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-[#06080d]/90 border border-white/5">
+                                <div class="text-xs font-black text-white">🔵 زين العراق (رصيد)</div>
+                                <div class="text-[10px] text-amber-400 mt-0.5">+20% فرق تصريف الرصيد</div>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleCartDrawer()" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-black text-[#00d2ff] transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span>افتح السلة لاستعراض أرقام التحويل والطلب</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN CATEGORY TABS -->
+        <div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-2 mb-8">
+            <button onclick="setMainCategory('all')" id="tab-all" class="main-tab flex-shrink-0 px-5 py-3 rounded-2xl text-xs sm:text-sm font-black bg-gradient-to-l from-[#f5b041] to-[#d97706] text-slate-950 shadow-lg shadow-[#f5b041]/20 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>الكل</span>
+            </button>
+            <button onclick="setMainCategory('opbr')" id="tab-opbr" class="main-tab flex-shrink-0 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0f1420] hover:bg-[#1a2234] text-slate-300 border border-white/10 transition-all flex items-center gap-2">
+                <span>🏴‍☠️</span>
+                <span>حسابات باونتي راش</span>
+            </button>
+            <button onclick="setMainCategory('psn')" id="tab-psn" class="main-tab flex-shrink-0 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0f1420] hover:bg-[#1a2234] text-slate-300 border border-white/10 transition-all flex items-center gap-2">
+                <i class="fa-brands fa-playstation text-[#00d2ff]"></i>
+                <span>بطاقات بليستيشن</span>
+            </button>
+            <button onclick="setMainCategory('xbox')" id="tab-xbox" class="main-tab flex-shrink-0 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0f1420] hover:bg-[#1a2234] text-slate-300 border border-white/10 transition-all flex items-center gap-2">
+                <i class="fa-brands fa-xbox text-emerald-400"></i>
+                <span>بطاقات إكس بوكس</span>
+            </button>
+        </div>
+
+        <!-- SECTION 1: ONE PIECE BOUNTY RUSH ACCOUNTS -->
+        <section id="section-opbr" class="mb-14">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#f5b041]/20 to-amber-600/10 border border-[#f5b041]/40 flex items-center justify-center text-2xl">
+                        ⚔️
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h2 class="text-xl sm:text-2xl font-black text-white">حسابات باونتي راش (OPBR)</h2>
+                            <span class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-[#f5b041]/15 text-[#f5b041] border border-[#f5b041]/30">الأسعار الرسمية</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-0.5">جميع الحسابات معروضة بأسعارها الأصلية — صفّي حسب عدد الإكستريم</p>
+                    </div>
+                </div>
+
+                <!-- EX Sub-Filter Tabs -->
+                <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
+                    <button onclick="setExFilter('all')" id="ex-btn-all" class="ex-pill flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-black bg-[#f5b041] text-slate-950 transition-all">الكل</button>
+                    <button onclick="setExFilter('0')" id="ex-btn-0" class="ex-pill flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0f1420] text-slate-300 border border-white/10 hover:border-[#f5b041]/40 transition-all">بدون EX</button>
+                    <button onclick="setExFilter('1')" id="ex-btn-1" class="ex-pill flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0f1420] text-slate-300 border border-white/10 hover:border-[#f5b041]/40 transition-all">1 EX</button>
+                    <button onclick="setExFilter('2')" id="ex-btn-2" class="ex-pill flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0f1420] text-slate-300 border border-white/10 hover:border-[#f5b041]/40 transition-all">2 EX</button>
+                    <button onclick="setExFilter('3')" id="ex-btn-3" class="ex-pill flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0f1420] text-slate-300 border border-white/10 hover:border-[#f5b041]/40 transition-all">3 EX</button>
+                    <button onclick="setExFilter('4')" id="ex-btn-4" class="ex-pill flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0f1420] text-slate-300 border border-white/10 hover:border-[#f5b041]/40 transition-all">4 EX</button>
+                </div>
+            </div>
+
+            <div id="opbr-groups-container" class="space-y-8"></div>
+        </section>
+
+        <!-- SECTION 2: PLAYSTATION STORE GIFT CARDS -->
+        <section id="section-psn" class="mb-14">
+            <div class="flex items-center gap-3.5 mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#00d2ff]/20 to-blue-600/10 border border-[#00d2ff]/40 flex items-center justify-center text-[#00d2ff] text-2xl">
+                    <i class="fa-brands fa-playstation"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h2 class="text-xl sm:text-2xl font-black text-white">بطاقات بليستيشن ستور (PSN)</h2>
+                        <span class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-[#00d2ff]/15 text-[#00d2ff] border border-[#00d2ff]/30">🇺🇸 أمريكي US</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-0.5">أكواد شحن رسمية لحسابات PlayStation الأمريكية (PS4 / PS5)</p>
+                </div>
+            </div>
+
+            <div id="psn-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+        </section>
+
+        <!-- SECTION 3: XBOX GIFT CARDS -->
+        <section id="section-xbox" class="mb-12">
+            <div class="flex items-center gap-3.5 mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-green-600/10 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-2xl">
+                    <i class="fa-brands fa-xbox"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h2 class="text-xl sm:text-2xl font-black text-white">بطاقات إكس بوكس ستور (Xbox)</h2>
+                        <span class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">🇺🇸 أمريكي US</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-0.5">اشحن رصيد Xbox و Game Pass بأكواد أمريكية أصلية</p>
+                </div>
+            </div>
+
+            <div id="xbox-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+        </section>
+
+        <!-- Empty Search Fallback -->
+        <div id="empty-search-state" class="hidden text-center py-16 bg-[#0f1420] border border-white/10 rounded-3xl">
+            <div class="text-4xl mb-3">🔍</div>
+            <h3 class="text-lg font-black text-white mb-1">لا توجد نتائج مطابقة لبحثك</h3>
+            <p class="text-xs text-slate-400 mb-4">جرّب البحث بكلمة أخرى مثل "5000"، "اكستريم"، أو "50$"</p>
+            <button onclick="resetAllFilters()" class="px-5 py-2.5 rounded-xl bg-[#f5b041] text-slate-950 font-black text-xs">إظهار جميع المنتجات</button>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#04060a] border-t border-white/10 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#f5b041]/20 border border-[#f5b041]/40 flex items-center justify-center text-[#f5b041]">
+                            <i class="fa-solid fa-crown text-sm"></i>
+                        </div>
+                        <span class="text-lg font-black text-white">متجر كايدو | KAIDO STORE</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        وجهتك الموثوقة لشراء حسابات ون بيس باونتي راش وبطاقات شحن بليستيشن وإكس بوكس في العراق بتسليم سريع وضمان كامل.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-black text-white mb-3">مميزات الشراء من متجر كايدو</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-bolt text-[#00d2ff]"></i> تسليم سريع خلال 5 إلى 30 دقيقة</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-shield-check text-emerald-400"></i> ضمان 100% على جميع الحسابات والأكواد</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-wallet text-[#f5b041]"></i> دعم زين كاش العراق، ماستر كارد، آسيا وزين</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-black text-white mb-3">تواصل معنا مباشرة</h4>
+                    <div class="flex flex-wrap gap-2.5">
+                        <a id="footer-wa-link" href="https://wa.me/9647XXXXXXXXX" target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 text-xs font-black transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-base"></i> واتساب المتجر
+                        </a>
+                        <a href="https://www.tiktok.com/@z0.pt" target="_blank" class="px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white hover:border-[#f5b041] text-xs font-black transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-tiktok text-[#f5b041]"></i> تيك توك: @z0.pt
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <p>© 2026 متجر كايدو (Kaido Store) — جميع الحقوق محفوظة.</p>
+                <!-- Discreet Merchant Profit Calculator Button -->
+                <button onclick="openMerchantModal()" class="text-slate-400 hover:text-[#f5b041] transition-colors flex items-center gap-2 bg-[#0f1420] px-3.5 py-2 rounded-xl border border-white/10">
+                    <i class="fa-solid fa-calculator text-[#f5b041]"></i>
+                    <span>حاسبة أرباح التاجر</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SHOPPING CART & DIRECT CHECKOUT DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+        <!-- Backdrop -->
+        <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        
+        <!-- Drawer Panel -->
+        <div class="absolute top-0 left-0 bottom-0 w-full max-w-md bg-[#0b0f19] border-r border-white/10 shadow-2xl flex flex-col justify-between overflow-y-auto">
+            
+            <div class="p-5 sm:p-6">
+                <!-- Drawer Header -->
+                <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-xl bg-[#f5b041]/15 border border-[#f5b041]/40 flex items-center justify-center text-[#f5b041]">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base sm:text-lg font-black text-white">سلة المشتريات والدفع</h3>
+                            <p class="text-[11px] text-slate-400">راجع طلبك واختر وسيلة الدفع للإرسال المباشر</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="cart-items-list" class="space-y-2.5 max-h-[34vh] overflow-y-auto pr-1 mb-5">
+                    <!-- Rendered dynamically -->
+                </div>
+
+                <!-- Checkout Controls (Visible when cart has items) -->
+                <div id="cart-checkout-section" class="hidden space-y-4 border-t border-white/10 pt-4">
+                    
+                    <!-- Step 1: Select Iraqi Payment Method -->
+                    <div>
+                        <label class="block text-xs font-black text-slate-300 mb-2">1. اختر طريقة الدفع داخل العراق:</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" onclick="selectCartPayment('zaincash')" id="cpm-zaincash" class="cpm-btn p-2.5 rounded-xl border border-[#f5b041] bg-[#f5b041]/15 text-right transition-all">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-black text-white">🟣 زين كاش العراق</span>
+                                    <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">0%</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-0.5">السعر الأساسي</div>
+                            </button>
+
+                            <button type="button" onclick="selectCartPayment('mastercard')" id="cpm-mastercard" class="cpm-btn p-2.5 rounded-xl border border-white/10 bg-[#111622] hover:border-white/25 text-right transition-all">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-black text-white">💳 ماستر كارد</span>
+                                    <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">0%</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-0.5">السعر الأساسي</div>
+                            </button>
+
+                            <button type="button" onclick="selectCartPayment('asiacell')" id="cpm-asiacell" class="cpm-btn p-2.5 rounded-xl border border-white/10 bg-[#111622] hover:border-white/25 text-right transition-all">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-black text-white">🔴 آسيا سيل</span>
+                                    <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">+20%</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-0.5">رصيد / آسيا حوالة</div>
+                            </button>
+
+                            <button type="button" onclick="selectCartPayment('zainiq')" id="cpm-zainiq" class="cpm-btn p-2.5 rounded-xl border border-white/10 bg-[#111622] hover:border-white/25 text-right transition-all">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-black text-white">🔵 زين العراق</span>
+                                    <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">+20%</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-0.5">تحويل رصيد</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Payment Number Box with One-Click Copy -->
+                    <div class="bg-[#06080d] border border-white/10 rounded-2xl p-3.5 flex items-center justify-between gap-2">
+                        <div class="min-w-0">
+                            <div class="text-[11px] text-slate-400" id="cart-wallet-label">رقم محفظة زين كاش العراق:</div>
+                            <div class="text-sm font-mono font-black text-[#f5b041] tracking-wider truncate mt-0.5" id="cart-wallet-number" dir="ltr">078XXXXXXXX</div>
+                        </div>
+                        <button type="button" onclick="copyCartPaymentNumber()" class="flex-shrink-0 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-[#f5b041] hover:text-slate-950 text-white text-xs font-black transition-all flex items-center gap-1.5">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>نسخ الرقم</span>
+                        </button>
+                    </div>
+
+                    <!-- Step 3: Total Price Summary -->
+                    <div class="bg-[#111622] border border-white/10 rounded-2xl p-3.5">
+                        <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+                            <span>المجموع الأساسي:</span>
+                            <span id="cart-subtotal-price" class="font-bold text-slate-200">0 د.ع</span>
+                        </div>
+                        <div id="cart-fee-row" class="hidden flex items-center justify-between text-xs text-amber-400 mb-1.5">
+                            <span>فرق تصريف الرصيد (+20%):</span>
+                            <span id="cart-fee-amount" class="font-bold">+0 د.ع</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-white/10">
+                            <span class="text-xs font-black text-white">المبلغ النهائي للتحويل:</span>
+                            <span id="cart-final-price" class="text-xl font-black text-emerald-400">0 د.ع</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Two Direct Checkout Buttons (WhatsApp & TikTok) -->
+                    <div class="space-y-2.5 pt-1">
+                        <button type="button" onclick="checkoutViaWhatsApp()" class="w-full py-3.5 px-4 rounded-2xl bg-[#25D366] hover:brightness-110 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-[#25D366]/20 transition-all flex items-center justify-center gap-2">
+                            <span>إتمام الطلب عبر واتساب 💬</span>
+                        </button>
+
+                        <button type="button" onclick="checkoutViaTikTok()" class="w-full py-3.5 px-4 rounded-2xl bg-[#06080d] hover:bg-[#161d2d] border border-white/20 hover:border-[#f5b041] text-white font-black text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
+                            <span>إتمام الطلب عبر تيك توك (@z0.pt) 🎵</span>
+                        </button>
+                        <p class="text-[10px] text-center text-slate-400">
+                            عند الضغط على تيك توك سيتم نسخ تفاصيل طلبك تلقائياً لتلصقها في الرسائل مع صورة الوصل.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MERCHANT PROFIT CALCULATOR MODAL (حاسبة أرباح التاجر) -->
+    <div id="merchant-modal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/85 backdrop-blur-md p-4 overflow-y-auto">
+        <div class="bg-[#0f1420] border border-[#f5b041]/40 rounded-3xl max-w-3xl w-full p-6 shadow-2xl relative my-auto">
+            <button onclick="closeMerchantModal()" class="absolute top-5 left-5 w-9 h-9 rounded-xl bg-white/5 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-2xl bg-[#f5b041]/20 border border-[#f5b041]/40 flex items-center justify-center text-[#f5b041] text-xl">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-black text-white">حاسبة أرباح التاجر — متجر كايدو</h3>
+                    <p class="text-xs text-slate-400">جدول التكلفة الأساسية وسعر البيع وصافي ربحك في كل منتج</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5 text-xs">
+                <div class="bg-[#06080d] border border-emerald-500/30 rounded-2xl p-3.5">
+                    <div class="text-emerald-400 font-black mb-1">💳 بطاقات PSN و Xbox (7 فئات)</div>
+                    <p class="text-slate-300">ربحك الصافي مضمون <strong class="text-emerald-400">+2,000 د.ع</strong> في كل بطاقة تُباع.</p>
+                </div>
+                <div class="bg-[#06080d] border border-white/10 rounded-2xl p-3.5">
+                    <div class="text-[#f5b041] font-black mb-1">⚔️ حسابات باونتي راش (20 باقة)</div>
+                    <p class="text-slate-300">معروضة بنفس الأسعار الأصلية لقائمتك تماماً (من 2,750 إلى 52,000 د.ع).</p>
+                </div>
+            </div>
+
+            <div class="max-h-72 overflow-y-auto rounded-2xl border border-white/10 bg-[#06080d]">
+                <table class="w-full text-right text-xs">
+                    <thead class="bg-[#161d2d] text-slate-300 sticky top-0">
+                        <tr>
+                            <th class="p-3">المنتج</th>
+                            <th class="p-3">التكلفة</th>
+                            <th class="p-3">سعر البيع</th>
+                            <th class="p-3 text-emerald-400">صافي الربح</th>
+                        </tr>
+                    </thead>
+                    <tbody id="merchant-table-body" class="divide-y divide-white/5 text-slate-200"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- APPLICATION SCRIPT -->
+    <script>
+        // ============================================================
+        // 1. STORE CONFIGURATION (عدّل أرقامك هنا بسهولة قبل النشر)
+        // ============================================================
+        const STORE_CONFIG = {
+            whatsappNumber: "9647XXXXXXXXX", // ضع رقم واتساب المتجر بصيغة دولية بدون +
+            tiktokUsername: "z0.pt",         // يوزر تيك توك المتجر
+            payments: {
+                zaincash: {
+                    name: "زين كاش العراق (ZainCash Iraq)",
+                    label: "رقم محفظة زين كاش العراق:",
+                    account: "078XXXXXXXX",
+                    isCredit: false
+                },
+                mastercard: {
+                    name: "ماستر كارد (Mastercard)",
+                    label: "رقم بطاقة الماستر كارد للتحويل:",
+                    account: "ضع-رقم-الماستر-هنا",
+                    isCredit: false
+                },
+                asiacell: {
+                    name: "آسيا سيل (رصيد / آسيا حوالة)",
+                    label: "رقم آسيا سيل للتحويل:",
+                    account: "077XXXXXXXX",
+                    isCredit: true
+                },
+                zainiq: {
+                    name: "زين العراق (تحويل رصيد)",
+                    label: "رقم زين العراق للتحويل:",
+                    account: "078XXXXXXXX",
+                    isCredit: true
+                }
+            }
+        };
+
+        // ============================================================
+        // 2. EXACT PRODUCT CATALOG DATA
+        // ============================================================
+
+        // One Piece Bounty Rush Accounts - EXACT original prices
+        const opbrGroups = [
+            {
+                exCount: '0',
+                title: 'حسابات الجواهر والشظايا (بدون EX)',
+                subtitle: 'موارد ضخمة جاهزة للتفتيح على البكجات الجديدة',
+                items: [
+                    { id: 'opbr-0-1', ex: 0, frags: 700, gems: 3000, ticket: false, price: 2750 },
+                    { id: 'opbr-0-2', ex: 0, frags: 300, gems: 5000, ticket: false, price: 3750 },
+                    { id: 'opbr-0-3', ex: 0, frags: 800, gems: 5000, ticket: false, price: 4740 },
+                    { id: 'opbr-0-4', ex: 0, frags: 4800, gems: 5000, ticket: true, price: 21000 },
+                ]
+            },
+            {
+                exCount: '1',
+                title: 'حسابات 1 EX (شخصية إكستريم واحدة)',
+                subtitle: 'شخصية إكستريم مضمونة + جواهر وشظايا للتطوير',
+                items: [
+                    { id: 'opbr-1-1', ex: 1, frags: 600, gems: 5000, ticket: false, price: 5750 },
+                    { id: 'opbr-1-2', ex: 1, frags: 1800, gems: 5000, ticket: false, price: 11000 },
+                    { id: 'opbr-1-3', ex: 1, frags: 3300, gems: 5000, ticket: false, price: 15750 },
+                    { id: 'opbr-1-4', ex: 1, frags: 8800, gems: 5000, ticket: false, price: 52000 },
+                ]
+            },
+            {
+                exCount: '2',
+                title: 'حسابات 2 EX (شخصيتين إكستريم)',
+                subtitle: 'ثنائي إكستريم قوي مع كميات شظايا متنوعة',
+                items: [
+                    { id: 'opbr-2-1', ex: 2, frags: 700, gems: 5000, ticket: false, price: 7750 },
+                    { id: 'opbr-2-2', ex: 2, frags: 1800, gems: 5000, ticket: false, price: 16000 },
+                    { id: 'opbr-2-3', ex: 2, frags: 2800, gems: 5000, ticket: false, price: 21000 },
+                    { id: 'opbr-2-4', ex: 2, frags: 4000, gems: 4000, ticket: false, price: 26000 },
+                    { id: 'opbr-2-5', ex: 2, frags: 6400, gems: 5000, ticket: false, price: 42000 },
+                    { id: 'opbr-2-6', ex: 2, frags: 8400, gems: 5000, ticket: false, price: 52000 },
+                ]
+            },
+            {
+                exCount: '3',
+                title: 'حسابات 3 EX (3 شخصيات إكستريم)',
+                subtitle: 'تشكيلة إكستريم نارية جاهزة للرينك العالي',
+                items: [
+                    { id: 'opbr-3-1', ex: 3, frags: 700, gems: 5000, ticket: false, price: 12000 },
+                    { id: 'opbr-3-2', ex: 3, frags: 1800, gems: 5000, ticket: false, price: 22000 },
+                    { id: 'opbr-3-3', ex: 3, frags: 4000, gems: 4000, ticket: false, price: 27000 },
+                    { id: 'opbr-3-4', ex: 3, frags: 6400, gems: 5000, ticket: false, price: 47000 },
+                ]
+            },
+            {
+                exCount: '4',
+                title: 'حسابات 4 EX (4 شخصيات إكستريم)',
+                subtitle: 'أقوى فئة حسابات VIP بأربع شخصيات إكستريم',
+                items: [
+                    { id: 'opbr-4-1', ex: 4, frags: 600, gems: 5000, ticket: false, price: 17000 },
+                    { id: 'opbr-4-2', ex: 4, frags: 1800, gems: 5000, ticket: false, price: 27000 },
+                ]
+            }
+        ];
+
+        // Store Gift Cards (PSN & Xbox US) - Includes +2,000 IQD Net Profit
+        const giftCardTiers = [
+            { usd: 10, cost: 17000, price: 19000, tag: '' },
+            { usd: 20, cost: 35000, price: 37000, tag: '' },
+            { usd: 25, cost: 42000, price: 44000, tag: 'الأكثر مبيعاً 🔥' },
+            { usd: 50, cost: 85000, price: 87000, tag: 'الأكثر طلباً ⭐' },
+            { usd: 75, cost: 130000, price: 132000, tag: '' },
+            { usd: 100, cost: 165000, price: 167000, tag: 'VIP' },
+            { usd: 150, cost: 250000, price: 252000, tag: '' },
+        ];
+
+        // ============================================================
+        // 3. STATE & HELPERS
+        // ============================================================
+        let activeMainCategory = 'all';
+        let activeExFilter = 'all';
+        let searchQuery = '';
+        let cart = [];
+        let selectedCartPayment = 'zaincash';
+
+        function formatIQD(num) {
+            return num.toLocaleString('en-US') + ' د.ع';
+        }
+
+        function copyTextSafe(text, successMessage) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                document.execCommand('copy');
+                if (successMessage) showToast(successMessage);
+            } catch (e) {
+                showToast('يرجى نسخ النص يدوياً');
+            }
+            document.body.removeChild(ta);
+        }
+
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const el = document.createElement('div');
+            el.className = 'bg-[#0f1420] border border-[#00d2ff]/60 text-white px-4 py-3 rounded-2xl shadow-2xl text-xs sm:text-sm font-bold flex items-center gap-2.5 transition-all duration-300';
+            el.innerHTML = `<i class="fa-solid fa-circle-check text-[#00d2ff] flex-shrink-0"></i><span>${msg}</span>`;
+            container.appendChild(el);
+            setTimeout(() => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(8px)';
+                setTimeout(() => el.remove(), 300);
+            }, 3500);
+        }
+
+        // ============================================================
+        // 4. RENDER STOREFRONT CATALOG
+        // ============================================================
+        function renderAllProducts() {
+            const q = searchQuery.trim().toLowerCase();
+            let totalVisible = 0;
+
+            // 1. Render OPBR Section
+            const opbrSection = document.getElementById('section-opbr');
+            const opbrContainer = document.getElementById('opbr-groups-container');
+            opbrContainer.innerHTML = '';
+
+            if (activeMainCategory === 'all' || activeMainCategory === 'opbr') {
+                let opbrMatches = 0;
+
+                opbrGroups.forEach(group => {
+                    if (activeExFilter !== 'all' && group.exCount !== activeExFilter) return;
+
+                    const matchingItems = group.items.filter(item => {
+                        if (!q) return true;
+                        const text = `${item.ex} ex اكستريم ${item.frags} شظايا فرگمنت ${item.gems} جوهرة ${item.ticket ? 'تكت' : ''} ${item.price} باونتي راش`.toLowerCase();
+                        return text.includes(q);
+                    });
+
+                    if (matchingItems.length === 0) return;
+                    opbrMatches += matchingItems.length;
+                    totalVisible += matchingItems.length;
+
+                    const groupEl = document.createElement('div');
+                    groupEl.className = 'bg-[#0b0f19]/90 border border-white/[0.07] rounded-3xl p-5 sm:p-6';
+
+                    const headerHtml = `
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5 pb-3 border-b border-white/[0.06]">
+                            <div>
+                                <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full ${group.exCount === '0' ? 'bg-[#00d2ff]' : 'bg-[#f5b041]'}"></span>
+                                    <span>${group.title}</span>
+                                </h3>
+                                <p class="text-xs text-slate-400 mt-0.5">${group.subtitle}</p>
+                            </div>
+                            <span class="self-start sm:self-auto text-[11px] font-black px-3 py-1 rounded-full ${group.exCount === '0' ? 'bg-[#00d2ff]/10 text-[#00d2ff] border border-[#00d2ff]/25' : 'bg-[#f5b041]/10 text-[#f5b041] border border-[#f5b041]/25'}">
+                                ${matchingItems.length} باقات
+                            </span>
+                        </div>
+                    `;
+
+                    const gridEl = document.createElement('div');
+                    gridEl.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
+
+                    matchingItems.forEach(item => {
+                        const title = item.ex > 0
+                            ? `حساب باونتي راش ${item.ex} EX (+${item.frags} شظايا / +${item.gems} جوهرة)`
+                            : `حساب باونتي راش (+${item.frags} شظايا${item.ticket ? ' + تكت' : ''} / +${item.gems} جوهرة)`;
+
+                        const card = document.createElement('div');
+                        card.className = 'store-card rounded-2xl p-4 flex flex-col justify-between';
+
+                        card.innerHTML = `
+                            <div>
+                                <div class="flex items-center justify-between gap-2 mb-3.5">
+                                    <span class="px-2.5 py-1 rounded-lg text-xs font-black ${item.ex > 0 ? 'bg-[#f5b041]/15 text-[#f5b041] border border-[#f5b041]/30' : 'bg-[#00d2ff]/15 text-[#00d2ff] border border-[#00d2ff]/30'}">
+                                        ${item.ex > 0 ? `⚔️ ${item.ex} EX` : '💎 بدون EX'}
+                                    </span>
+                                    ${item.ticket ? `<span class="px-2 py-0.5 rounded-md text-[11px] font-black bg-rose-500/15 text-rose-400 border border-rose-500/30">+ تكت 🎫</span>` : `<span class="text-[11px] text-slate-500 font-bold">تسليم فوري</span>`}
+                                </div>
+
+                                <div class="bg-[#06080d]/90 border border-white/[0.06] rounded-xl p-3 space-y-2.5 mb-4">
+                                    <div class="flex items-center justify-between text-xs sm:text-sm">
+                                        <span class="text-slate-400">💎 الجواهر</span>
+                                        <span class="font-black text-[#00d2ff]" dir="ltr">+${item.gems}</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs sm:text-sm">
+                                        <span class="text-slate-400">🔶 الشظايا</span>
+                                        <span class="font-black text-[#f5b041]" dir="ltr">+${item.frags}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-3 border-t border-white/[0.07]">
+                                <div class="flex items-baseline justify-between mb-3">
+                                    <span class="text-[11px] text-slate-400 font-bold">السعر:</span>
+                                    <span class="text-lg font-black text-white">${formatIQD(item.price)}</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="addAndOpenCart('${item.id}', 'حسابات باونتي راش', '${title}', ${item.price})" 
+                                        class="flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-l from-[#f5b041] to-[#d97706] hover:brightness-110 text-slate-950 font-black text-xs transition-all shadow-md">
+                                        اطلب الآن
+                                    </button>
+                                    <button onclick="addToCart('${item.id}', 'حسابات باونتي راش', '${title}', ${item.price})" title="إضافة إلى السلة"
+                                        class="w-10 h-9 rounded-xl bg-white/5 hover:bg-[#00d2ff]/20 hover:text-[#00d2ff] border border-white/10 text-slate-300 flex items-center justify-center transition-all">
+                                        <i class="fa-solid fa-cart-plus text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        gridEl.appendChild(card);
+                    });
+
+                    groupEl.innerHTML = headerHtml;
+                    groupEl.appendChild(gridEl);
+                    opbrContainer.appendChild(groupEl);
+                });
+
+                opbrSection.classList.toggle('hidden', opbrMatches === 0);
+            } else {
+                opbrSection.classList.add('hidden');
+            }
+
+            // 2. Render PlayStation Cards
+            const psnSection = document.getElementById('section-psn');
+            const psnGrid = document.getElementById('psn-cards-grid');
+            psnGrid.innerHTML = '';
+
+            if (activeMainCategory === 'all' || activeMainCategory === 'psn') {
+                const matchingPsn = giftCardTiers.filter(c => {
+                    if (!q) return true;
+                    return `playstation psn بلايستيشن بليستيشن ستور ${c.usd}$ ${c.usd} دولار ${c.price}`.toLowerCase().includes(q);
+                });
+
+                matchingPsn.forEach(card => {
+                    totalVisible++;
+                    const title = `بطاقة بليستيشن ستور أمريكي ${card.usd}$ (PSN US)`;
+                    psnGrid.appendChild(createGiftCardElement('psn', card, title));
+                });
+                psnSection.classList.toggle('hidden', matchingPsn.length === 0);
+            } else {
+                psnSection.classList.add('hidden');
+            }
+
+            // 3. Render Xbox Cards
+            const xboxSection = document.getElementById('section-xbox');
+            const xboxGrid = document.getElementById('xbox-cards-grid');
+            xboxGrid.innerHTML = '';
+
+            if (activeMainCategory === 'all' || activeMainCategory === 'xbox') {
+                const matchingXbox = giftCardTiers.filter(c => {
+                    if (!q) return true;
+                    return `xbox إكس بوكس اكس بوكس ستور ${c.usd}$ ${c.usd} دولار ${c.price}`.toLowerCase().includes(q);
+                });
+
+                matchingXbox.forEach(card => {
+                    totalVisible++;
+                    const title = `بطاقة إكس بوكس ستور أمريكي ${card.usd}$ (Xbox US)`;
+                    xboxGrid.appendChild(createGiftCardElement('xbox', card, title));
+                });
+                xboxSection.classList.toggle('hidden', matchingXbox.length === 0);
+            } else {
+                xboxSection.classList.add('hidden');
+            }
+
+            document.getElementById('empty-search-state').classList.toggle('hidden', totalVisible > 0);
+        }
+
+        function createGiftCardElement(platform, card, fullTitle) {
+            const isPsn = platform === 'psn';
+            const el = document.createElement('div');
+            el.className = `store-card ${isPsn ? 'ps-card' : 'xbox-card'} rounded-2xl p-5 flex flex-col justify-between`;
+
+            const gradient = isPsn
+                ? 'from-[#00439c] via-[#0070d1] to-[#00d2ff]'
+                : 'from-[#0e4d1c] via-[#107c10] to-[#22c55e]';
+
+            const iconHtml = isPsn
+                ? '<i class="fa-brands fa-playstation text-3xl text-white"></i>'
+                : '<i class="fa-brands fa-xbox text-3xl text-white"></i>';
+
+            const btnStyle = isPsn
+                ? 'bg-gradient-to-l from-[#00d2ff] to-[#0284c7] text-slate-950'
+                : 'bg-gradient-to-l from-emerald-400 to-emerald-600 text-slate-950';
+
+            el.innerHTML = `
+                <div>
+                    <div class="relative h-32 rounded-xl bg-gradient-to-br ${gradient} p-4 mb-4 flex flex-col justify-between overflow-hidden shadow-lg">
+                        <div class="absolute -right-6 -bottom-6 w-28 h-28 rounded-full bg-white/10 blur-md"></div>
+                        <div class="flex items-center justify-between relative z-10">
+                            ${iconHtml}
+                            <span class="px-2 py-0.5 rounded-md bg-black/40 backdrop-blur-sm text-white text-[10px] font-black border border-white/20">
+                                🇺🇸 US REGION
+                            </span>
+                        </div>
+                        <div class="flex items-end justify-between relative z-10">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-wider text-white/85 font-bold">${isPsn ? 'PlayStation Store' : 'Xbox Gift Card'}</div>
+                                <div class="text-2xl font-black text-white leading-none mt-0.5" dir="ltr">$${card.usd}.00</div>
+                            </div>
+                            ${card.tag ? `<span class="text-[10px] font-black bg-amber-400 text-slate-950 px-2 py-0.5 rounded-md shadow">${card.tag}</span>` : ''}
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm font-black text-white mb-1">${isPsn ? 'بطاقة بليستيشن ستور' : 'بطاقة إكس بوكس'} فئة ${card.usd}$</h3>
+                    <p class="text-[11px] text-slate-400 mb-4">كود رقمي رسمي يُرسل فوراً بعد تأكيد التحويل.</p>
+                </div>
+
+                <div class="pt-3 border-t border-white/[0.07]">
+                    <div class="flex items-baseline justify-between mb-3">
+                        <span class="text-[11px] text-slate-400 font-bold">السعر (كاش):</span>
+                        <span class="text-lg font-black text-white">${formatIQD(card.price)}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="addAndOpenCart('${platform}-${card.usd}', '${isPsn ? 'بطاقات بليستيشن' : 'بطاقات إكس بوكس'}', '${fullTitle}', ${card.price})" 
+                            class="flex-1 py-2.5 px-3 rounded-xl ${btnStyle} hover:brightness-110 font-black text-xs transition-all shadow-md">
+                            اطلب الآن
+                        </button>
+                        <button onclick="addToCart('${platform}-${card.usd}', '${isPsn ? 'بطاقات بليستيشن' : 'بطاقات إكس بوكس'}', '${fullTitle}', ${card.price})" title="إضافة إلى السلة"
+                            class="w-10 h-9 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-slate-300 flex items-center justify-center transition-all">
+                            <i class="fa-solid fa-cart-plus text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            return el;
+        }
+
+        // ============================================================
+        // 5. FILTERS & SEARCH
+        // ============================================================
+        function setMainCategory(cat) {
+            activeMainCategory = cat;
+            document.querySelectorAll('.main-tab').forEach(btn => {
+                btn.className = 'main-tab flex-shrink-0 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0f1420] hover:bg-[#1a2234] text-slate-300 border border-white/10 transition-all flex items-center gap-2';
+            });
+            const active = document.getElementById(`tab-${cat}`);
+            if (active) {
+                active.className = 'main-tab flex-shrink-0 px-5 py-3 rounded-2xl text-xs sm:text-sm font-black bg-gradient-to-l from-[#f5b041] to-[#d97706] text-slate-950 shadow-lg shadow-[#f5b041]/20 transition-all flex items-center gap-2';
+            }
+            renderAllProducts();
+        }
+
+        function setExFilter(ex) {
+            activeExFilter = ex;
+            document.querySelectorAll('.ex-pill').forEach(btn => {
+                btn.className = 'ex-pill flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-[#0f1420] text-slate-300 border border-white/10 hover:border-[#f5b041]/40 transition-all';
+            });
+            const active = document.getElementById(`ex-btn-${ex}`);
+            if (active) {
+                active.className = 'ex-pill flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-black bg-[#f5b041] text-slate-950 transition-all';
+            }
+            renderAllProducts();
+        }
+
+        function handleSearch(val) {
+            searchQuery = val;
+            document.getElementById('global-search').value = val;
+            document.getElementById('mobile-search').value = val;
+            renderAllProducts();
+        }
+
+        function resetAllFilters(e) {
+            if (e) e.preventDefault();
+            searchQuery = '';
+            document.getElementById('global-search').value = '';
+            document.getElementById('mobile-search').value = '';
+            activeExFilter = 'all';
+            setExFilter('all');
+            setMainCategory('all');
+        }
+
+        // ============================================================
+        // 6. SHOPPING CART & PAYMENT LOGIC
+        // ============================================================
+        function addToCart(id, category, title, price) {
+            const existing = cart.find(i => i.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ id, category, title, price, qty: 1 });
+            }
+            updateCartUI();
+            showToast('تمت الإضافة إلى السلة 🛒');
+        }
+
+        function addAndOpenCart(id, category, title, price) {
+            const existing = cart.find(i => i.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ id, category, title, price, qty: 1 });
+            }
+            updateCartUI();
+            const drawer = document.getElementById('cart-drawer');
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+            }
+        }
+
+        function changeCartQty(index, delta) {
+            if (!cart[index]) return;
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('hidden');
+            updateCartUI();
+        }
+
+        function selectCartPayment(methodKey) {
+            selectedCartPayment = methodKey;
+
+            document.querySelectorAll('.cpm-btn').forEach(btn => {
+                btn.classList.remove('border-[#f5b041]', 'bg-[#f5b041]/15');
+                btn.classList.add('border-white/10', 'bg-[#111622]');
+            });
+
+            const activeBtn = document.getElementById(`cpm-${methodKey}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-white/10', 'bg-[#111622]');
+                activeBtn.classList.add('border-[#f5b041]', 'bg-[#f5b041]/15');
+            }
+
+            const payObj = STORE_CONFIG.payments[methodKey];
+            document.getElementById('cart-wallet-label').textContent = payObj.label;
+            document.getElementById('cart-wallet-number').textContent = payObj.account;
+
+            calculateCartTotals();
+        }
+
+        function calculateCartTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const payObj = STORE_CONFIG.payments[selectedCartPayment];
+
+            let finalTotal = subtotal;
+            let feeAmount = 0;
+
+            if (payObj.isCredit && subtotal > 0) {
+                // +20% rounded up to nearest 250 IQD for Iraqi mobile credit conversion
+                finalTotal = Math.ceil((subtotal * 1.20) / 250) * 250;
+                feeAmount = finalTotal - subtotal;
+                document.getElementById('cart-fee-row').classList.remove('hidden');
+                document.getElementById('cart-fee-amount').textContent = `+${formatIQD(feeAmount)}`;
+            } else {
+                document.getElementById('cart-fee-row').classList.add('hidden');
+            }
+
+            document.getElementById('cart-subtotal-price').textContent = formatIQD(subtotal);
+            document.getElementById('cart-final-price').textContent = formatIQD(finalTotal);
+
+            return { subtotal, feeAmount, finalTotal };
+        }
+
+        function updateCartUI() {
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-badge').textContent = totalQty;
+
+            const listEl = document.getElementById('cart-items-list');
+            const checkoutSec = document.getElementById('cart-checkout-section');
+
+            if (cart.length === 0) {
+                listEl.innerHTML = `
+                    <div class="text-center py-12 bg-[#0f1420] rounded-2xl border border-white/5">
+                        <div class="text-4xl mb-2 opacity-70">🛒</div>
+                        <p class="text-sm font-black text-slate-300">سلة المشتريات فارغة</p>
+                        <p class="text-xs text-slate-500 mt-1">أضف حساب باونتي راش أو بطاقة ستور للبدء</p>
+                    </div>
+                `;
+                checkoutSec.classList.add('hidden');
+                return;
+            }
+
+            checkoutSec.classList.remove('hidden');
+            listEl.innerHTML = '';
+
+            cart.forEach((item, idx) => {
+                listEl.innerHTML += `
+                    <div class="bg-[#0f1420] border border-white/10 rounded-2xl p-3 flex items-center justify-between gap-2.5">
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[10px] font-bold text-[#00d2ff]">${item.category}</span>
+                            <div class="text-xs font-black text-white leading-snug mt-0.5">${item.title}</div>
+                            <div class="text-xs font-extrabold text-[#f5b041] mt-1">${formatIQD(item.price * item.qty)}</div>
+                        </div>
+
+                        <div class="flex items-center gap-1.5 flex-shrink-0">
+                            <button onclick="changeCartQty(${idx}, -1)" class="w-7 h-7 rounded-lg bg-white/5 hover:bg-white/15 text-slate-200 font-black text-xs flex items-center justify-center">-</button>
+                            <span class="w-5 text-center text-xs font-black text-white">${item.qty}</span>
+                            <button onclick="changeCartQty(${idx}, 1)" class="w-7 h-7 rounded-lg bg-white/5 hover:bg-white/15 text-slate-200 font-black text-xs flex items-center justify-center">+</button>
+                            <button onclick="removeFromCart(${idx})" title="حذف" class="w-7 h-7 rounded-lg bg-rose-500/10 hover:bg-rose-500/25 text-rose-400 flex items-center justify-center mr-1">
+                                <i class="fa-solid fa-trash-can text-[11px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            selectCartPayment(selectedCartPayment);
+        }
+
+        function copyCartPaymentNumber() {
+            const num = document.getElementById('cart-wallet-number').textContent;
+            copyTextSafe(num, 'تم نسخ رقم الدفع بنجاح ✅');
+        }
+
+        function buildOrderSummaryMessage() {
+            const { finalTotal } = calculateCartTotals();
+            const payObj = STORE_CONFIG.payments[selectedCartPayment];
+            const itemsLines = cart.map((item, idx) => `${idx + 1}. ${item.title} (العدد: ${item.qty}) — ${formatIQD(item.price * item.qty)}`).join('\n');
+
+            return `مرحباً متجر كايدو 👑\nأرغب بطلب المنتجات التالية:\n━━━━━━━━━━━━━━\n${itemsLines}\n━━━━━━━━━━━━━━\n💳 طريقة الدفع: ${payObj.name}\n💰 المبلغ الإجمالي: ${formatIQD(finalTotal)}\n📸 (مرفق صورة وصل التحويل الآن)`;
+        }
+
+        function checkoutViaWhatsApp() {
+            if (cart.length === 0) return;
+            const msg = encodeURIComponent(buildOrderSummaryMessage());
+            const waUrl = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${msg}`;
+            window.open(waUrl, '_blank');
+        }
+
+        function checkoutViaTikTok() {
+            if (cart.length === 0) return;
+            const msg = buildOrderSummaryMessage();
+            copyTextSafe(msg, 'تم نسخ تفاصيل طلبك! الصق الرسالة في محادثة تيك توك مع صورة الوصل 🎵');
+            const ttUrl = `https://www.tiktok.com/@${STORE_CONFIG.tiktokUsername}`;
+            setTimeout(() => {
+                window.open(ttUrl, '_blank');
+            }, 400);
+        }
+
+        // ============================================================
+        // 7. MERCHANT PROFIT CALCULATOR MODAL
+        // ============================================================
+        function openMerchantModal() {
+            const tbody = document.getElementById('merchant-table-body');
+            tbody.innerHTML = '';
+
+            giftCardTiers.forEach(c => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="p-3 font-bold">بطاقة ستور PSN / Xbox فئة ${c.usd}$</td>
+                        <td class="p-3 text-slate-400">${formatIQD(c.cost)}</td>
+                        <td class="p-3 text-white font-bold">${formatIQD(c.price)}</td>
+                        <td class="p-3 text-emerald-400 font-black">+${formatIQD(c.price - c.cost)}</td>
+                    </tr>
+                `;
+            });
+
+            opbrGroups.forEach(g => {
+                g.items.forEach(item => {
+                    const label = item.ex > 0
+                        ? `باونتي راش ${item.ex} EX (+${item.frags} شظايا / +${item.gems} جوهرة)`
+                        : `باونتي راش (+${item.frags} شظايا${item.ticket ? ' + تكت' : ''} / +${item.gems} جوهرة)`;
+                    tbody.innerHTML += `
+                        <tr>
+                            <td class="p-3">${label}</td>
+                            <td class="p-3 text-slate-400">${formatIQD(item.price)}</td>
+                            <td class="p-3 text-white font-bold">${formatIQD(item.price)}</td>
+                            <td class="p-3 text-[#f5b041] font-bold">السعر الأصلي</td>
+                        </tr>
+                    `;
+                });
+            });
+
+            const m = document.getElementById('merchant-modal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeMerchantModal() {
+            const m = document.getElementById('merchant-modal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        // ============================================================
+        // 8. INITIALIZATION
+        // ============================================================
+        window.addEventListener('DOMContentLoaded', () => {
+            // Sync WhatsApp links from config
+            const waHref = `https://wa.me/${STORE_CONFIG.whatsappNumber}`;
+            const headerWa = document.getElementById('header-wa-link');
+            const footerWa = document.getElementById('footer-wa-link');
+            if (headerWa) headerWa.href = waHref;
+            if (footerWa) footerWa.href = waHref;
+
+            renderAllProducts();
+            updateCartUI();
+        });
+    </script>
+</body>
+</html>
